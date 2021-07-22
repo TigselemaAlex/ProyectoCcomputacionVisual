@@ -11,6 +11,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,27 +25,41 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     public Login() {
+        //System.out.println(getClass().getResource("/images/logo.jpg"));
+
         initComponents();
+
         this.setTitle("LOGIN");
-        
+
     }
-    
-    private void logear() throws SQLException{
-        Conexion cc = new Conexion();
-        Connection cn = cc.conectar();
-        String usuario = this.jTxtUsuario.getText();
-        String contraseña = Arrays.toString(this.jTxtPswContraseña.getPassword());
-        
-        String sql= "";
-        sql="SELECT ID_USU, ROL_USU, EST_USU where ID_USU='" + usuario + "' AND CLA_USU='" + contraseña +"'";
-        Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery(sql);
-        if(rs.next()){
-            if(rs.getString("EST_USU").equals("Y") ){
-                
+
+    private void logear() {
+        try {
+            Conexion cc = new Conexion();
+            Connection cn = cc.conectar();
+            String usuario = this.jTxtUsuario.getText();
+            String contraseña = String.valueOf(this.jTxtPswContraseña.getPassword());
+            String sql = "";
+            sql = "SELECT ID_USU, ROL_USU, EST_USU FROM usuarios where ID_USU='" + usuario + "' AND CLA_USU='" + contraseña + "'";
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                if (rs.getString("EST_USU").equals("Y")) {
+                    if (rs.getString("ROL_USU").equals("A")) {
+                        Menu m = new Menu(rs.getString("ROL_USU"));
+                        m.setVisible(true);
+                        this.dispose();
+                    } else {
+
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Usuario Desactivado");
+                }
             }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
         }
-        
+
     }
 
     /**
@@ -101,14 +118,13 @@ public class Login extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBtnIngresar))
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addGap(27, 27, 27)
-                            .addComponent(jTxtPswContraseña))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(27, 27, 27)
+                        .addComponent(jTxtPswContraseña)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -137,7 +153,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIngresarActionPerformed
-        // TODO add your handling code here:
+        logear();
     }//GEN-LAST:event_jBtnIngresarActionPerformed
 
     /**
