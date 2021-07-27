@@ -5,33 +5,31 @@
  */
 package interfaz;
 
+
 /**
  *
  * @author Kevinssg12
  */
 public class Menu extends javax.swing.JFrame {
 
-    
-    
     /**
      * Creates new form Menu
      */
     public Menu(String rol) {
         initComponents();
-        habilitarBotonesPorRol(rol);
-        
+        //habilitarBotonesPorRol(rol);
     }
 
-    public void habilitarBotonesPorRol(String rol){
-        if(rol.equals("V")){
+    public void habilitarBotonesPorRol(String rol) {
+        if (rol.equals("A")) {
             jLbProducto.setVisible(false);
             jBtnIngresarP.setVisible(false);
             jBtnModificarP.setVisible(false);
             jBtnDarBajaP.setVisible(false);
             jBtnInventario.setVisible(false);
-        } 
+        }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,38 +47,51 @@ public class Menu extends javax.swing.JFrame {
         jLbProducto = new javax.swing.JLabel();
         jBtnVentas = new javax.swing.JButton();
         jBtnIngresoCli = new javax.swing.JButton();
-        jBtnFactura = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
-        jBtnIngresarP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         jBtnIngresarP.setText("Ingresar");
+        jBtnIngresarP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnIngresarPActionPerformed(evt);
+            }
+        });
 
-        jBtnModificarP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jBtnModificarP.setText("Modificar ");
+        jBtnModificarP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnModificarPActionPerformed(evt);
+            }
+        });
 
-        jBtnDarBajaP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jBtnDarBajaP.setText("Dar de Baja");
+        jBtnDarBajaP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnDarBajaPActionPerformed(evt);
+            }
+        });
 
-        jBtnInventario.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jBtnInventario.setText("Inventarios");
+        jBtnInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnInventarioActionPerformed(evt);
+            }
+        });
 
         jLbProducto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLbProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLbProducto.setText("Productos");
 
-        jBtnVentas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jBtnVentas.setText("Ventas");
 
-        jBtnIngresoCli.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jBtnIngresoCli.setText("Ingreso Cliente");
-
-        jBtnFactura.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jBtnFactura.setText("Factura");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -96,7 +107,6 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBtnVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBtnIngresoCli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBtnFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLbProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBtnIngresarP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBtnModificarP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -115,27 +125,28 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jBtnIngresoCli)
                 .addGap(18, 18, 18)
-                .addComponent(jBtnFactura)
-                .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLbProducto)
+                .addGap(18, 18, 18)
+                .addComponent(jBtnInventario)
                 .addGap(18, 18, 18)
                 .addComponent(jBtnIngresarP)
                 .addGap(18, 18, 18)
                 .addComponent(jBtnModificarP)
                 .addGap(18, 18, 18)
                 .addComponent(jBtnDarBajaP)
-                .addGap(18, 18, 18)
-                .addComponent(jBtnInventario)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
+
+        jDesktopPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jDesktopPane1.setPreferredSize(new java.awt.Dimension(603, 475));
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 599, Short.MAX_VALUE)
+            .addGap(0, 603, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,15 +159,14 @@ public class Menu extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jDesktopPane1)
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jDesktopPane1)
-                .addContainerGap())
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -183,10 +193,36 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jBtnIngresarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIngresarPActionPerformed
+        
+        IngresoP iP = new IngresoP();
+        this.jDesktopPane1.add(iP);
+        iP.setVisible(true);
+    }//GEN-LAST:event_jBtnIngresarPActionPerformed
+
+    private void jBtnModificarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnModificarPActionPerformed
+//        Modificar mA = new Modificar();
+//        this.jDesktopPane1.add(mA);
+//        mA.setVisible(true);
+    }//GEN-LAST:event_jBtnModificarPActionPerformed
+
+    private void jBtnDarBajaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDarBajaPActionPerformed
+//        DarBaja dB = new DarBaja();
+//        this.jDesktopPane1.add(dB);
+//        dB.setVisible(true);
+        
+    }//GEN-LAST:event_jBtnDarBajaPActionPerformed
+
+    private void jBtnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnInventarioActionPerformed
+//        Inventario iN = new Inventario();
+//        this.jDesktopPane1.add(iN);
+//        iN.setVisible(true);
+    }//GEN-LAST:event_jBtnInventarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
-     public static void main(String args[]) {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -197,16 +233,24 @@ public class Menu extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -214,15 +258,14 @@ public class Menu extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                
-                new Menu("V").setVisible(true);
+
+                new Menu("A").setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnDarBajaP;
-    private javax.swing.JButton jBtnFactura;
     private javax.swing.JButton jBtnIngresarP;
     private javax.swing.JButton jBtnIngresoCli;
     private javax.swing.JButton jBtnInventario;
