@@ -201,22 +201,22 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnIngresarPActionPerformed
 
     private void jBtnModificarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnModificarPActionPerformed
-//        Modificar mA = new Modificar();
-//        this.jDesktopPane1.add(mA);
-//        mA.setVisible(true);
+        Modificar mA = new Modificar();
+        this.jDesktopPane1.add(mA);
+        mA.setVisible(true);
     }//GEN-LAST:event_jBtnModificarPActionPerformed
 
     private void jBtnDarBajaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDarBajaPActionPerformed
-//        DarBaja dB = new DarBaja();
-//        this.jDesktopPane1.add(dB);
-//        dB.setVisible(true);
+        DarBaja dB = new DarBaja();
+        this.jDesktopPane1.add(dB);
+        dB.setVisible(true);
         
     }//GEN-LAST:event_jBtnDarBajaPActionPerformed
 
     private void jBtnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnInventarioActionPerformed
-//        Inventario iN = new Inventario();
-//        this.jDesktopPane1.add(iN);
-//        iN.setVisible(true);
+        Inventario iN = new Inventario();
+        this.jDesktopPane1.add(iN);
+        iN.setVisible(true);
     }//GEN-LAST:event_jBtnInventarioActionPerformed
 
     /**
