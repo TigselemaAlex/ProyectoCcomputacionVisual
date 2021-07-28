@@ -33,8 +33,7 @@
                       <Component id="jTxtUsuario" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jBtnRegistrarse" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="jBtnIngresar" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jLabel4" max="32767" attributes="0"/>
@@ -70,10 +69,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel4" min="-2" pref="15" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jBtnIngresar" min="-2" max="-2" attributes="0"/>
-                  <Component id="jBtnRegistrarse" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="jBtnIngresar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -102,8 +98,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtUsuario">
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTxtUsuarioFocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="jTxtPswContrase&#xf1;a">
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTxtPswContrase&#xf1;aFocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBtnIngresar">
       <Properties>
@@ -112,11 +114,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnIngresarActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="jBtnRegistrarse">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Registrarse"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>

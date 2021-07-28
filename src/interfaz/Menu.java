@@ -5,7 +5,6 @@
  */
 package interfaz;
 
-
 /**
  *
  * @author Kevinssg12
@@ -15,19 +14,27 @@ public class Menu extends javax.swing.JFrame {
     /**
      * Creates new form Menu
      */
-    public Menu(String rol) {
+    private String idUsu;
+    private String nomUsu;
+    private String apeUsu;
+
+    public Menu(String rol, String idUsu, String nomUsu,String apeUsu) {
         initComponents();
-        //habilitarBotonesPorRol(rol);
+        this.idUsu = idUsu;
+        this.nomUsu = nomUsu;
+        this.apeUsu = apeUsu;
+        habilitarBotonesPorRol(rol);
     }
 
     public void habilitarBotonesPorRol(String rol) {
-        if (rol.equals("A")) {
+        if (rol.equals("V")) {
             jLbProducto.setVisible(false);
             jBtnIngresarP.setVisible(false);
             jBtnModificarP.setVisible(false);
             jBtnDarBajaP.setVisible(false);
-            jBtnInventario.setVisible(false);
-        }
+            jSepProductos.setVisible(false);
+            jLbProducto.setVisible(false);
+        } 
     }
 
     /**
@@ -48,7 +55,14 @@ public class Menu extends javax.swing.JFrame {
         jBtnVentas = new javax.swing.JButton();
         jBtnIngresoCli = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
+        jSepProductos = new javax.swing.JSeparator();
+        jLbProducto1 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jButton1 = new javax.swing.JButton();
+        jLbProducto2 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
 
@@ -90,20 +104,56 @@ public class Menu extends javax.swing.JFrame {
         jLbProducto.setText("Productos");
 
         jBtnVentas.setText("Ventas");
+        jBtnVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnVentasActionPerformed(evt);
+            }
+        });
 
         jBtnIngresoCli.setText("Ingreso Cliente");
+        jBtnIngresoCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnIngresoCliActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Facturacion");
 
+        jLbProducto1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLbProducto1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLbProducto1.setText("Reportes");
+
+        jButton1.setText("Ver");
+
+        jLbProducto2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLbProducto2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLbProducto2.setText("Sesion");
+
+        jButton2.setText("Cerrar Sesion");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Salir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLbProducto1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBtnVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBtnIngresoCli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -112,7 +162,12 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(jBtnModificarP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBtnDarBajaP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBtnInventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSeparator1))
+                    .addComponent(jSepProductos)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLbProducto2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator3)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -125,7 +180,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jBtnIngresoCli)
                 .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSepProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLbProducto)
                 .addGap(18, 18, 18)
@@ -136,7 +191,21 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jBtnModificarP)
                 .addGap(18, 18, 18)
                 .addComponent(jBtnDarBajaP)
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLbProducto1)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addGap(12, 12, 12)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLbProducto2)
+                .addGap(25, 25, 25)
+                .addComponent(jButton2)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         jDesktopPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -166,7 +235,7 @@ public class Menu extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE))
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -194,7 +263,7 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnIngresarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIngresarPActionPerformed
-        
+
         IngresoP iP = new IngresoP();
         this.jDesktopPane1.add(iP);
         iP.setVisible(true);
@@ -210,7 +279,7 @@ public class Menu extends javax.swing.JFrame {
         DarBaja dB = new DarBaja();
         this.jDesktopPane1.add(dB);
         dB.setVisible(true);
-        
+
     }//GEN-LAST:event_jBtnDarBajaPActionPerformed
 
     private void jBtnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnInventarioActionPerformed
@@ -219,50 +288,72 @@ public class Menu extends javax.swing.JFrame {
         iN.setVisible(true);
     }//GEN-LAST:event_jBtnInventarioActionPerformed
 
+    private void jBtnIngresoCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIngresoCliActionPerformed
+        IngresoClientes iC = new IngresoClientes();
+        this.jDesktopPane1.add(iC);
+        iC.setVisible(true);
+    }//GEN-LAST:event_jBtnIngresoCliActionPerformed
+
+    private void jBtnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnVentasActionPerformed
+        Venta vT = new Venta(idUsu, nomUsu, apeUsu);
+        jDesktopPane1.add(vT);
+        vT.setVisible(true);
+    }//GEN-LAST:event_jBtnVentasActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Login log = new Login();
+        this.dispose();
+        log.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-
-                new Menu("A").setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Login.class
+//                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Login.class
+//                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Login.class
+//                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Login.class
+//                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//                new Menu("A", "1803834371", "Alex", "Tigselema").setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnDarBajaP;
@@ -271,11 +362,18 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton jBtnInventario;
     private javax.swing.JButton jBtnModificarP;
     private javax.swing.JButton jBtnVentas;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLbProducto;
+    private javax.swing.JLabel jLbProducto1;
+    private javax.swing.JLabel jLbProducto2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSepProductos;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     // End of variables declaration//GEN-END:variables
 }

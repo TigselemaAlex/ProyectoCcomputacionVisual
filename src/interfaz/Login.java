@@ -40,24 +40,26 @@ public class Login extends javax.swing.JFrame {
             String usuario = this.jTxtUsuario.getText();
             String contraseña = String.valueOf(this.jTxtPswContraseña.getPassword());
             String sql = "";
-            sql = "SELECT ID_USU, ROL_USU, EST_USU FROM usuarios where ID_USU='" + usuario + "' AND CLA_USU='" + contraseña + "'";
+            sql = "SELECT ID_USU, ROL_USU, EST_USU, NOM_USU, APE_USU FROM usuarios where ID_USU='" + usuario + "' AND CLA_USU='" + contraseña + "'";
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             if (rs.next()) {
                 if (rs.getString("EST_USU").equals("Y")) {
-                    if (rs.getString("ROL_USU").equals("A")) {
-                        Menu m = new Menu(rs.getString("ROL_USU"));
-                        m.setVisible(true);
-                        this.dispose();
-                    } else {
-
-                    }
+                    Menu m = new Menu(rs.getString("ROL_USU"), rs.getString("ID_USU"), rs.getString("NOM_USU"), rs.getString("APE_USU"));
+                    m.setVisible(true);
+                    this.dispose();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Usuario Desactivado");
+                    this.jLabel4.setText("Usuario o contraseña no válidos");
+                    this.jLabel4.setForeground(Color.red);
                 }
+            } else {
+                this.jLabel4.setText("Usuario o contraseña no válidos");
+                this.jLabel4.setForeground(Color.red);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
+            this.jLabel4.setText("Usuario o contraseña no válidos");
+            this.jLabel4.setForeground(Color.red);
         }
 
     }
@@ -77,7 +79,6 @@ public class Login extends javax.swing.JFrame {
         jTxtUsuario = new javax.swing.JTextField();
         jTxtPswContraseña = new javax.swing.JPasswordField();
         jBtnIngresar = new javax.swing.JButton();
-        jBtnRegistrarse = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,14 +92,24 @@ public class Login extends javax.swing.JFrame {
 
         jLabel3.setText("Contraseña:");
 
+        jTxtUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTxtUsuarioFocusGained(evt);
+            }
+        });
+
+        jTxtPswContraseña.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTxtPswContraseñaFocusGained(evt);
+            }
+        });
+
         jBtnIngresar.setText("Ingresar");
         jBtnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnIngresarActionPerformed(evt);
             }
         });
-
-        jBtnRegistrarse.setText("Registrarse");
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
@@ -114,8 +125,7 @@ public class Login extends javax.swing.JFrame {
                         .addGap(47, 47, 47)
                         .addComponent(jTxtUsuario))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jBtnRegistrarse)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jBtnIngresar))
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
@@ -143,9 +153,7 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBtnIngresar)
-                    .addComponent(jBtnRegistrarse))
+                .addComponent(jBtnIngresar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -155,6 +163,14 @@ public class Login extends javax.swing.JFrame {
     private void jBtnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIngresarActionPerformed
         logear();
     }//GEN-LAST:event_jBtnIngresarActionPerformed
+
+    private void jTxtUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTxtUsuarioFocusGained
+        this.jLabel4.setText(null);
+    }//GEN-LAST:event_jTxtUsuarioFocusGained
+
+    private void jTxtPswContraseñaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTxtPswContraseñaFocusGained
+        this.jLabel4.setText(null);
+    }//GEN-LAST:event_jTxtPswContraseñaFocusGained
 
     /**
      * @param args the command line arguments
@@ -193,7 +209,6 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnIngresar;
-    private javax.swing.JButton jBtnRegistrarse;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

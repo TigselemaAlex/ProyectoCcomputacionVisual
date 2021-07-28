@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author José Pazmiño
+ * @author kaise
  */
 public class Modificar extends javax.swing.JInternalFrame {
 
@@ -349,7 +349,7 @@ public class Modificar extends javax.swing.JInternalFrame {
         cantidad = jFTxtCantidad.getText();
         bodega = jCmbBodegas.getSelectedItem().toString();
         if (!(nombre.equals("") || marca.equals("") || precio.equals("")
-                || cantidad.equals("") || cantidad.equals("0") || precio.equals("0") || bodega.equals("Seleccione una"))) {
+                || cantidad.equals("") || cantidad.equals("0") || precio.equals("0,00") || bodega.equals("Seleccione una"))) {
             try {
                 String sql = "";
                 sql = "UPDATE PRODUCTOS SET NOM_PRO = '" + nombre + "', MAR_PRO='" + marca + "',PRE_UNI_PRO='" + precio + "' WHERE ID_PRO ='" + jTbArticulos.getValueAt(jTbArticulos.getSelectedRow(), 0).toString() + "'";

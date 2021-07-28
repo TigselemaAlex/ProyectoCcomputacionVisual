@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author José Pazmiño
+ * @author kaise
  */
 public class DarBaja extends javax.swing.JInternalFrame {
 
@@ -27,9 +27,10 @@ public class DarBaja extends javax.swing.JInternalFrame {
      */
     public DarBaja() {
         initComponents();
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         cargarTabla();
     }
-    
+
     private void cargarTabla() {
         try {
             Conexion cc = new Conexion();
@@ -55,7 +56,7 @@ public class DarBaja extends javax.swing.JInternalFrame {
                 datos[5] = rs.getString("B.NOM_BOD");
                 datos[6] = rs.getString("P.EST_PRO");
                 model.addRow(datos);
-                
+
             }
             this.jTblArticulos.setModel(model);
         } catch (SQLException ex) {
@@ -170,26 +171,30 @@ public class DarBaja extends javax.swing.JInternalFrame {
     private void jBtnActDesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnActDesActionPerformed
         cambiarEstado();
     }//GEN-LAST:event_jBtnActDesActionPerformed
-    
+
     private void cambiarEstado() {
         Conexion cc = new Conexion();
         Connection cn = cc.conectar();
         int fila = jTblArticulos.getSelectedRow();
         if (fila != -1) {
             try {
-                String sql = "";
-                if (jTblArticulos.getValueAt(fila, 6).equals("N")) {
-                    sql = "UPDATE PRODUCTOS SET EST_PRO = 'Y' WHERE ID_PRO = '" + jTblArticulos.getValueAt(fila, 0)+"'";
-                }else{
-                    sql = "UPDATE PRODUCTOS SET EST_PRO = 'N' WHERE ID_PRO = '" + jTblArticulos.getValueAt(fila, 0)+"'";
+                int n = JOptionPane.showConfirmDialog(null, "¿Seguro que desea cambiar el estado del articulo?","Cambio de estado", JOptionPane.YES_NO_OPTION);
+                if (n == JOptionPane.OK_OPTION) {
+                    String sql = "";
+                    if (jTblArticulos.getValueAt(fila, 6).equals("N")) {
+                        sql = "UPDATE PRODUCTOS SET EST_PRO = 'Y' WHERE ID_PRO = '" + jTblArticulos.getValueAt(fila, 0) + "'";
+                    } else {
+                        sql = "UPDATE PRODUCTOS SET EST_PRO = 'N' WHERE ID_PRO = '" + jTblArticulos.getValueAt(fila, 0) + "'";
+                    }
+                    PreparedStatement psd = cn.prepareStatement(sql);
+                    psd.executeUpdate();
+                    cargarTabla();
                 }
-                PreparedStatement psd = cn.prepareStatement(sql);
-                psd.executeUpdate();
             } catch (SQLException ex) {
-                Logger.getLogger(DarBaja.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
             }
         }
-        cargarTabla();
+
     }
 
 

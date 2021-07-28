@@ -5,7 +5,7 @@
  */
 package interfaz;
 
-import interfaz.Conexion;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author José Pazmiño
+ * @author kaise
  */
 public class Inventario extends javax.swing.JInternalFrame {
 
@@ -25,8 +25,10 @@ public class Inventario extends javax.swing.JInternalFrame {
      */
     public Inventario() {
         initComponents();
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         cargarCmbBodegas();
         cargarTabla();
+        
     }
 
     private void cargarCmbBodegas() {
