@@ -12,11 +12,19 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DecimalFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -574,6 +582,7 @@ public class Venta extends javax.swing.JInternalFrame {
 
     private void jBtnFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnFacturarActionPerformed
         facturar();
+        
     }//GEN-LAST:event_jBtnFacturarActionPerformed
 
     private void facturar() {
@@ -611,6 +620,8 @@ public class Venta extends javax.swing.JInternalFrame {
             }
             if (aux == jTblProdVenta.getRowCount() && n > 0) {
                 JOptionPane.showMessageDialog(null, "La factura se creo con éxito", "Generar factura", JOptionPane.INFORMATION_MESSAGE);
+                System.out.println(jTxtNumFact.getText());
+                facturacion();
                 porDefecto();
                 //REPORTE
             } else {
@@ -718,6 +729,20 @@ public class Venta extends javax.swing.JInternalFrame {
         }
     }
 
+    public void facturacion(){
+        try {
+            Conexion cc = new Conexion();
+            //Connection cn = cc.conectar();
+            Map id_factura = new HashMap();
+            id_factura.put("id_factura", jTxtNumFact.getText());
+            JasperReport reporte = JasperCompileManager.compileReport("src/reporte/factura.jrxml");
+            JasperPrint print = JasperFillManager.fillReport(reporte, id_factura, cc.conectar());
+            JasperViewer.viewReport(print, false);
+        } catch (JRException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+    
     private void verTotal() {
         Double total = 0d;
         for (int i = 0; i < jTblProdVenta.getRowCount(); i++) {

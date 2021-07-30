@@ -58,7 +58,7 @@ public class Menu extends javax.swing.JFrame {
         jSepProductos = new javax.swing.JSeparator();
         jLbProducto1 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
+        jBtnVerReportes = new javax.swing.JButton();
         jLbProducto2 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jButton2 = new javax.swing.JButton();
@@ -125,7 +125,12 @@ public class Menu extends javax.swing.JFrame {
         jLbProducto1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLbProducto1.setText("Reportes");
 
-        jButton1.setText("Ver");
+        jBtnVerReportes.setText("Ver");
+        jBtnVerReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnVerReportesActionPerformed(evt);
+            }
+        });
 
         jLbProducto2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLbProducto2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -153,7 +158,7 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBtnVerReportes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBtnVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBtnIngresoCli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -196,7 +201,7 @@ public class Menu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLbProducto1)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(jBtnVerReportes)
                 .addGap(12, 12, 12)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -310,6 +315,12 @@ public class Menu extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jBtnVerReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnVerReportesActionPerformed
+        ReporteCon report = new ReporteCon();
+        jDesktopPane1.add(report);
+        report.setVisible(true);
+    }//GEN-LAST:event_jBtnVerReportesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -362,7 +373,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton jBtnInventario;
     private javax.swing.JButton jBtnModificarP;
     private javax.swing.JButton jBtnVentas;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBtnVerReportes;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JDesktopPane jDesktopPane1;

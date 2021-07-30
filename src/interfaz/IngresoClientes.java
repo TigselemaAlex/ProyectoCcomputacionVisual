@@ -346,7 +346,6 @@ public class IngresoClientes extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Ya existe un cliente con dicha cedula", "Error al registrar Cliente", JOptionPane.ERROR_MESSAGE);
             }
         }
-
     }
 
     private void cargarTablaClientes() {
